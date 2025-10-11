@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4lh5vpo6iv8n"]
+
+[ext_resource type="Texture2D" uid="uid://tielynu17lau" path="res://texturas/getReal.jpg" id="1_ds2w5"]
+[ext_resource type="Script" uid="uid://dq1ccjegwg1fk" path="res://scripts/personaje.gd" id="2_vwpi2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfbld"]
+albedo_color = Color(0.73333335, 0.8156863, 0.6509804, 1)
+albedo_texture = ExtResource("1_ds2w5")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mlix7"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_11nvo"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_d2u4r"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Mapa" type="StaticBody3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Mapa"]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
+material = SubResource("StandardMaterial3D_xfbld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mapa"]
+shape = SubResource("BoxShape3D_mlix7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Mapa"]
+transform = Transform3D(-0.49410877, 0.7879441, -0.36742437, 0, 0.42261824, 0.9063078, 0.86940014, 0.4478146, -0.20881937, -55.783886, 37.239273, -4.109392)
+
+[node name="Camera3D" type="Camera3D" parent="Mapa"]
+transform = Transform3D(-0.49410877, 0.7879441, -0.36742437, 0, 0.42261824, 0.9063078, 0.86940014, 0.4478146, -0.20881937, -0.6986799, 21.201424, -4.109392)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.422999, 0)
+script = ExtResource("2_vwpi2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_11nvo")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_d2u4r")
