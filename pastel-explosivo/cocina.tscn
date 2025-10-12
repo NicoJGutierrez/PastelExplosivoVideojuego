@@ -28,16 +28,17 @@ shape = SubResource("BoxShape3D_mlix7")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Mapa"]
 transform = Transform3D(-0.49410877, 0.7879441, -0.36742437, 0, 0.42261824, 0.9063078, 0.86940014, 0.4478146, -0.20881937, -55.783886, 37.239273, -4.109392)
 
-[node name="Camera3D" type="Camera3D" parent="Mapa"]
-transform = Transform3D(-0.49410877, 0.7879441, -0.36742437, 0, 0.42261824, 0.9063078, 0.86940014, 0.4478146, -0.20881937, -0.6986799, 21.201424, -4.109392)
-
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.422999, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4967365, 0)
 script = ExtResource("2_vwpi2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_11nvo")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="CharacterBody3D"]
 mesh = SubResource("CapsuleMesh_d2u4r")
+
+[node name="Pivot" type="Node3D" parent="CharacterBody3D"]
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Pivot"]
+transform = Transform3D(-4.371139e-08, -0.4336591, 0.90107703, 0, 0.90107703, 0.4336591, -1, 1.8955841e-08, -3.9387327e-08, 12.464109, 6.2342634, 0)
