@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://c4lh5vpo6iv8n"]
+[gd_scene load_steps=17 format=3 uid="uid://c4lh5vpo6iv8n"]
 
 [ext_resource type="Texture2D" uid="uid://tielynu17lau" path="res://texturas/getReal.jpg" id="1_ds2w5"]
 [ext_resource type="Script" uid="uid://bbe2xu120ur2x" path="res://cocina.gd" id="1_hbqs7"]
 [ext_resource type="Script" uid="uid://dq1ccjegwg1fk" path="res://scripts/personaje.gd" id="2_vwpi2"]
 [ext_resource type="ArrayMesh" uid="uid://cttlhqohaqija" path="res://modelos3d/PlayerModel.obj" id="3_vwpi2"]
+[ext_resource type="PackedScene" uid="uid://cmxs2ap2rnbh0" path="res://modelos3d/maguito_p_1.tscn" id="5_akgxs"]
 [ext_resource type="PackedScene" uid="uid://cphjdhf0syy8c" path="res://modelos3d/mesita.tscn" id="5_x5vut"]
 [ext_resource type="PackedScene" uid="uid://d1jdofkn04kp1" path="res://modelos3d/tabla_cortar.tscn" id="6_x5vut"]
 [ext_resource type="PackedScene" uid="uid://dj5p3fbufmvuy" path="res://modelos3d/refri.tscn" id="7_akgxs"]
@@ -17,7 +18,7 @@ albedo_texture = ExtResource("1_ds2w5")
 size = Vector3(100, 1, 100)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_11nvo"]
-radius = 0.92333984
+radius = 1.1425781
 height = 4.678711
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x5vut"]
@@ -55,6 +56,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4967365, 0)
 script = ExtResource("2_vwpi2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+visible = false
 layers = 2
 mesh = ExtResource("3_vwpi2")
 
@@ -70,6 +72,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0162377, -3.0216942)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/PickupRange"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5587559, -1.2778189)
 shape = SubResource("CapsuleShape3D_x5vut")
+
+[node name="maguito_p1_mesh" parent="CharacterBody3D" instance=ExtResource("5_akgxs")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 
 [node name="mesita2" parent="." instance=ExtResource("5_x5vut")]
 transform = Transform3D(7.87, 0, 0, 0, 7.87, 0, 0, 0, 7.87, -7.930361, 1.1210508, 3.1556907)
