@@ -63,7 +63,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3393555, 0)
 shape = SubResource("CapsuleShape3D_11nvo")
 
 [node name="pickup point" type="Node3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0162377, -2.191638)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0162377, -3.0216942)
 
 [node name="PickupRange" type="Area3D" parent="CharacterBody3D"]
 
