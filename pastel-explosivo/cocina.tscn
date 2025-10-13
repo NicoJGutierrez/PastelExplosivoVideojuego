@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c4lh5vpo6iv8n"]
+[gd_scene load_steps=16 format=3 uid="uid://c4lh5vpo6iv8n"]
 
 [ext_resource type="Texture2D" uid="uid://tielynu17lau" path="res://texturas/getReal.jpg" id="1_ds2w5"]
 [ext_resource type="Script" uid="uid://bbe2xu120ur2x" path="res://cocina.gd" id="1_hbqs7"]
@@ -20,11 +20,15 @@ size = Vector3(100, 1, 100)
 radius = 0.92333984
 height = 4.678711
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x5vut"]
+radius = 2.6445313
+height = 7.1499023
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_a3eri"]
 size = Vector3(0.45, 1, 0.5)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_x5vut"]
-radius = 1.0214028
+[sub_resource type="BoxShape3D" id="BoxShape3D_x5vut"]
+size = Vector3(0.6496582, 0.08502197, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hbqs7"]
 size = Vector3(1.32, 4.8, 1.32)
@@ -61,6 +65,12 @@ shape = SubResource("CapsuleShape3D_11nvo")
 [node name="pickup point" type="Node3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0162377, -2.191638)
 
+[node name="PickupRange" type="Area3D" parent="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/PickupRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5587559, -1.2778189)
+shape = SubResource("CapsuleShape3D_x5vut")
+
 [node name="mesita2" parent="." instance=ExtResource("5_x5vut")]
 transform = Transform3D(7.87, 0, 0, 0, 7.87, 0, 0, 0, 7.87, -7.930361, 1.1210508, 3.1556907)
 
@@ -70,13 +80,15 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="mesita2/StaticBody3D"]
 shape = SubResource("BoxShape3D_a3eri")
 
-[node name="tablaCortar2" parent="." instance=ExtResource("6_x5vut")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -7.9844203, 5.0859833, 2.9959807)
+[node name="TablaRigidbody" type="RigidBody3D" parent="." groups=["pickuplocal"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9844203, 5.0859833, 2.9959807)
 
-[node name="Area3d" type="Area3D" parent="tablaCortar2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TablaRigidbody" groups=["pickuplocal"]]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("BoxShape3D_x5vut")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="tablaCortar2/Area3d"]
-shape = SubResource("SphereShape3D_x5vut")
+[node name="tablaCortarModel" parent="TablaRigidbody" groups=["pickup", "pickuplocal"] instance=ExtResource("6_x5vut")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="Refri2" parent="." instance=ExtResource("7_akgxs")]
 transform = Transform3D(4.045, 0, 0, 0, 4.045, 0, 0, 0, 4.045, -7.0293407, 0.80565166, -9.708527)
