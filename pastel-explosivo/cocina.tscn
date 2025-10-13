@@ -40,9 +40,6 @@ size = Vector3(1.32, 4.8, 1.32)
 process_mode = 3
 script = ExtResource("1_hbqs7")
 
-[node name="Explosion" parent="." instance=ExtResource("2_8sgn3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9844203, 5.0859833, 2.9959807)
-
 [node name="Mapa" type="StaticBody3D" parent="."]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Mapa"]
