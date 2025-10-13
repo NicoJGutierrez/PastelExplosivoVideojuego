@@ -1,49 +1,47 @@
+
 extends CharacterBody3D
 
-@export var speed: float = 5.0
+
+@export var speed: float = 15.0
 @export var acceleration: float = 8.0
-@onready var camera: Camera3D = $Pivot/Camera3D
 @export var jump_force: float = 15.0
 @export var gravity: float = 40.0
 
-func _physics_process(delta: float) -> void:
-	if not is_on_floor():
-		velocity.y -= gravity * delta
-	else:
-	# Si está en el suelo y se presiona saltar
-		if Input.is_action_just_pressed("jump"):
-			velocity.y = jump_force
-	var input_dir = Vector2.ZERO
-	
-	input_dir.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	input_dir.y = Input.get_action_strength("move_forward") - Input.get_action_strength("move_back")
+@onready var mesh: MeshInstance3D = $MeshInstance3D
 
-	if input_dir.length() > 0:
-		input_dir = input_dir.normalized()
-		var forward = -camera.global_transform.basis.z
-		var right = camera.global_transform.basis.x
-		var direction = (right * input_dir.x + forward * input_dir.y).normalized()
-
-		velocity.x = lerp(velocity.x, direction.x * speed, acceleration * delta)
-		velocity.z = lerp(velocity.z, direction.z * speed, acceleration * delta)
-	else:
-		velocity.x = lerp(velocity.x, 0.0, acceleration * delta)
-		velocity.z = lerp(velocity.z, 0.0, acceleration * delta)
-	rotation.y = pivot.rotation.y
-	move_and_slide()
-
-
-
-@onready var pivot = $Pivot
-@export var mouse_sensitivity := 0.3
-
-var camera_angle := 0.0  # Ángulo horizontal de la cámara
-
-func _ready():
+func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _unhandled_input(event):
-	if event is InputEventMouseMotion:
-		# Rotar la cámara horizontalmente (orbitando alrededor del personaje)
-		camera_angle -= event.relative.x * mouse_sensitivity
-		pivot.rotation.y = deg_to_rad(camera_angle)
+func _physics_process(delta: float) -> void:
+	# --- GRAVEDAD ---
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+	elif Input.is_action_just_pressed("jump"):
+		velocity.y = jump_force
+
+	# --- ENTRADA DE MOVIMIENTO ---
+	var input_dir := Vector3.ZERO
+
+	if Input.is_action_pressed("move_forward"):
+		input_dir.z -= 1
+	if Input.is_action_pressed("move_back"):
+		input_dir.z += 1
+	if Input.is_action_pressed("move_left"):
+		input_dir.x -= 1
+	if Input.is_action_pressed("move_right"):
+		input_dir.x += 1
+
+	input_dir = input_dir.normalized()
+
+	# --- VELOCIDAD SUAVIZADA ---
+	var target_velocity = input_dir * speed
+	velocity.x = lerp(velocity.x, target_velocity.x, acceleration * delta)
+	velocity.z = lerp(velocity.z, target_velocity.z, acceleration * delta)
+
+	# --- ROTAR EL MESH HACIA LA DIRECCIÓN DE MOVIMIENTO ---
+	if input_dir.length() > 0.1:
+		var target_rotation = atan2(-input_dir.x, -input_dir.z)
+		mesh.rotation.y = lerp_angle(mesh.rotation.y, target_rotation, delta * 10.0)
+
+	# --- MOVER PERSONAJE ---
+	move_and_slide()
