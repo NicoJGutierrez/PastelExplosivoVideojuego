@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4lh5vpo6iv8n"]
+[gd_scene load_steps=14 format=3 uid="uid://c4lh5vpo6iv8n"]
 
 [ext_resource type="Texture2D" uid="uid://tielynu17lau" path="res://texturas/getReal.jpg" id="1_ds2w5"]
+[ext_resource type="Script" uid="uid://bbe2xu120ur2x" path="res://cocina.gd" id="1_hbqs7"]
 [ext_resource type="Script" uid="uid://dq1ccjegwg1fk" path="res://scripts/personaje.gd" id="2_vwpi2"]
 [ext_resource type="ArrayMesh" uid="uid://cttlhqohaqija" path="res://modelos3d/PlayerModel.obj" id="3_vwpi2"]
 [ext_resource type="PackedScene" uid="uid://bcghak25rii1d" path="res://modelos3d/mesita.glb" id="4_6pybg"]
 [ext_resource type="PackedScene" uid="uid://dcokifstj34y1" path="res://modelos3d/tablaCortar.glb" id="5_a3eri"]
 [ext_resource type="PackedScene" uid="uid://qjfev672lk2" path="res://modelos3d/Refri.glb" id="6_hbqs7"]
+[ext_resource type="Script" uid="uid://do5oqdjeqlxcp" path="res://pause_menu.gd" id="8_x5vut"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfbld"]
 albedo_color = Color(0.73333335, 0.8156863, 0.6509804, 1)
@@ -16,7 +18,13 @@ size = Vector3(100, 1, 100)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_11nvo"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_a3eri"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hbqs7"]
+
 [node name="Node3D" type="Node3D"]
+process_mode = 3
+script = ExtResource("1_hbqs7")
 
 [node name="Mapa" type="StaticBody3D" parent="."]
 
@@ -30,26 +38,83 @@ shape = SubResource("BoxShape3D_mlix7")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Mapa"]
 transform = Transform3D(-0.49410877, 0.7879441, -0.36742437, 0, 0.42261824, 0.9063078, 0.86940014, 0.4478146, -0.20881937, -55.783886, 37.239273, -4.109392)
 
-[node name="Camera3D" type="Camera3D" parent="Mapa"]
-transform = Transform3D(1, 0, 0, 0, 0.90107703, 0.4336591, 0, -0.4336591, 0.90107703, 0, 24.331, 34.00133)
-
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4967365, 0)
 script = ExtResource("2_vwpi2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+layers = 2
 mesh = ExtResource("3_vwpi2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("CapsuleShape3D_11nvo")
 
-[node name="Pivot" type="Node3D" parent="CharacterBody3D"]
-
 [node name="mesita" parent="." instance=ExtResource("4_6pybg")]
 transform = Transform3D(7.87, 0, 0, 0, 7.87, 0, 0, 0, 7.87, -7.930361, 1.1210508, 3.1556907)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="mesita"]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mesita/StaticBody3D"]
+transform = Transform3D(0.44180986, 0, 0, 0, 1.0736189, 0, 0, 0, 0.49702877, 0, 0, 0)
+shape = SubResource("BoxShape3D_a3eri")
 
 [node name="tablaCortar" parent="." instance=ExtResource("5_a3eri")]
 transform = Transform3D(3.1562815, 0, -0.426746, 0, 3.185, 0, 0.426746, 0, 3.1562815, -7.575178, 5.056577, 3.1207452)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="tablaCortar"]
+
 [node name="Refri" parent="." instance=ExtResource("6_hbqs7")]
 transform = Transform3D(4.045, 0, 0, 0, 4.045, 0, 0, 0, 4.045, -7.0293407, 0.80565166, -9.708527)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Refri"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Refri/StaticBody3D"]
+transform = Transform3D(1.4630165, 0, 0, 0, 5.015144, 0, 0, 0, 1.3559723, 0, 0, 0)
+shape = SubResource("BoxShape3D_hbqs7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="PauseMenu" type="Control" parent="CanvasLayer"]
+process_mode = 3
+light_mask = 0
+visibility_layer = 0
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_x5vut")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PauseMenu"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button2" type="Button" parent="CanvasLayer/PauseMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0.31, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="CanvasLayer/PauseMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.90107703, 0.4336591, 0, -0.4336591, 0.90107703, 0, 24.331, 34.00133)
