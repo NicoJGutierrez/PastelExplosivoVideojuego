@@ -15,6 +15,13 @@ run/main_scene="uid://c4lh5vpo6iv8n"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/mode=3
+window/size/borderless=true
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
 [global_group]
 
 pickup="items able to be picked up by the player"
