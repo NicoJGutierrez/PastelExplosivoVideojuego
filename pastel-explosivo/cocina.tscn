@@ -1,26 +1,33 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4lh5vpo6iv8n"]
+[gd_scene load_steps=15 format=3 uid="uid://c4lh5vpo6iv8n"]
 
 [ext_resource type="Texture2D" uid="uid://tielynu17lau" path="res://texturas/getReal.jpg" id="1_ds2w5"]
 [ext_resource type="Script" uid="uid://bbe2xu120ur2x" path="res://cocina.gd" id="1_hbqs7"]
 [ext_resource type="Script" uid="uid://dq1ccjegwg1fk" path="res://scripts/personaje.gd" id="2_vwpi2"]
 [ext_resource type="ArrayMesh" uid="uid://cttlhqohaqija" path="res://modelos3d/PlayerModel.obj" id="3_vwpi2"]
-[ext_resource type="PackedScene" uid="uid://bcghak25rii1d" path="res://modelos3d/mesita.glb" id="4_6pybg"]
-[ext_resource type="PackedScene" uid="uid://dcokifstj34y1" path="res://modelos3d/tablaCortar.glb" id="5_a3eri"]
-[ext_resource type="PackedScene" uid="uid://qjfev672lk2" path="res://modelos3d/Refri.glb" id="6_hbqs7"]
+[ext_resource type="PackedScene" uid="uid://cphjdhf0syy8c" path="res://modelos3d/mesita.tscn" id="5_x5vut"]
+[ext_resource type="PackedScene" uid="uid://d1jdofkn04kp1" path="res://modelos3d/tabla_cortar.tscn" id="6_x5vut"]
+[ext_resource type="PackedScene" uid="uid://dj5p3fbufmvuy" path="res://modelos3d/refri.tscn" id="7_akgxs"]
 [ext_resource type="Script" uid="uid://do5oqdjeqlxcp" path="res://pause_menu.gd" id="8_x5vut"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfbld"]
-albedo_color = Color(0.73333335, 0.8156863, 0.6509804, 1)
+albedo_color = Color(0.61106855, 0.014915431, 0.49780202, 1)
 albedo_texture = ExtResource("1_ds2w5")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mlix7"]
 size = Vector3(100, 1, 100)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_11nvo"]
+radius = 0.92333984
+height = 4.678711
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a3eri"]
+size = Vector3(0.45, 1, 0.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_x5vut"]
+radius = 1.0214028
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hbqs7"]
+size = Vector3(1.32, 4.8, 1.32)
 
 [node name="Node3D" type="Node3D"]
 process_mode = 3
@@ -48,34 +55,40 @@ layers = 2
 mesh = ExtResource("3_vwpi2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3393555, 0)
 shape = SubResource("CapsuleShape3D_11nvo")
 
-[node name="mesita" parent="." instance=ExtResource("4_6pybg")]
+[node name="pickup point" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0162377, -2.191638)
+
+[node name="mesita2" parent="." instance=ExtResource("5_x5vut")]
 transform = Transform3D(7.87, 0, 0, 0, 7.87, 0, 0, 0, 7.87, -7.930361, 1.1210508, 3.1556907)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="mesita"]
+[node name="StaticBody3D" type="StaticBody3D" parent="mesita2"]
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="mesita/StaticBody3D"]
-transform = Transform3D(0.44180986, 0, 0, 0, 1.0736189, 0, 0, 0, 0.49702877, 0, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mesita2/StaticBody3D"]
 shape = SubResource("BoxShape3D_a3eri")
 
-[node name="tablaCortar" parent="." instance=ExtResource("5_a3eri")]
-transform = Transform3D(3.1562815, 0, -0.426746, 0, 3.185, 0, 0.426746, 0, 3.1562815, -7.575178, 5.056577, 3.1207452)
+[node name="tablaCortar2" parent="." instance=ExtResource("6_x5vut")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -7.9844203, 5.0859833, 2.9959807)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="tablaCortar"]
+[node name="Area3d" type="Area3D" parent="tablaCortar2"]
 
-[node name="Refri" parent="." instance=ExtResource("6_hbqs7")]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tablaCortar2/Area3d"]
+shape = SubResource("SphereShape3D_x5vut")
+
+[node name="Refri2" parent="." instance=ExtResource("7_akgxs")]
 transform = Transform3D(4.045, 0, 0, 0, 4.045, 0, 0, 0, 4.045, -7.0293407, 0.80565166, -9.708527)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Refri"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Refri2"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Refri/StaticBody3D"]
-transform = Transform3D(1.4630165, 0, 0, 0, 5.015144, 0, 0, 0, 1.3559723, 0, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Refri2/StaticBody3D"]
 shape = SubResource("BoxShape3D_hbqs7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
+follow_viewport_enabled = true
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer"]
 process_mode = 3
@@ -97,6 +110,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.43137255, 0.43137255, 0.43137255, 0.5137255)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu"]
 process_mode = 3
@@ -111,6 +125,7 @@ grow_vertical = 2
 custom_minimum_size = Vector2(0.31, 0)
 layout_mode = 2
 size_flags_vertical = 3
+text = "Meme"
 
 [node name="Button" type="Button" parent="CanvasLayer/PauseMenu/VBoxContainer"]
 layout_mode = 2

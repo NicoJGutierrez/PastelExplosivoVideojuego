@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cphjdhf0syy8c"]
+
+[ext_resource type="PackedScene" uid="uid://bcghak25rii1d" path="res://modelos3d/mesita.glb" id="1_krloc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yiw3s"]
+albedo_color = Color(0.4706539, 0.3034801, 0.09311315, 1)
+
+[node name="mesita" instance=ExtResource("1_krloc")]
+
+[node name="Cube_002" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_yiw3s")
