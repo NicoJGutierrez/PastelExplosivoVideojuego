@@ -6,6 +6,8 @@ extends CharacterBody3D
 @export var acceleration: float = 8.0
 @export var jump_force: float = 15.0
 @export var gravity: float = 40.0
+@export var force_strength: float = 30.0
+@export var pickup_damping_distance: float = 1.0
 
 @onready var mesh: MeshInstance3D = $MeshInstance3D
 
@@ -46,9 +48,10 @@ func _physics_process(delta: float) -> void:
 	# --- MOVER PERSONAJE ---
 	move_and_slide()
 	
+	
+	
 	if Input.is_action_just_pressed("pickup"):
 		if $"pickup point".get_children() != []:
-			print($"pickup point".get_children() )
 			for i in $"pickup point".get_children():
 				i.reparent(self.get_parent())
 				if i is RigidBody3D:
@@ -56,11 +59,20 @@ func _physics_process(delta: float) -> void:
 		else:
 			for i in $PickupRange.get_overlapping_bodies():
 				if i.is_in_group("pickuplocal"):
-					print("mem")
 					i.reparent($"pickup point")
 					if i is RigidBody3D:
 						i.gravity_scale = 0
 						i.position = $"pickup point".position
 					break
-			
-	
+
+	if $"pickup point".get_children() != []:
+		for i in $"pickup point".get_children():
+			if i is RigidBody3D:
+				var direction = $"pickup point".global_position - i.global_position
+				var distance = direction.length()
+				if distance > pickup_damping_distance:
+					direction = direction.normalized()
+					var force = direction * force_strength
+					i.apply_central_force(force)
+				i.set_axis_velocity(Vector3.ZERO)
+				
