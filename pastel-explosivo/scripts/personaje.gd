@@ -44,15 +44,13 @@ func _physics_process(delta: float) -> void:
 
 	if abs(knockback.x) > 0.01:
 		var direction = sign(knockback.x)  # -1, 0, o 1
-		var reduction = abs(delta * gravity)
-		var new_magnitude = max(0, abs(knockback.x) - reduction)
+		var new_magnitude = max(0, abs(knockback.x) - abs(delta * gravity*4))
 		knockback.x = direction * new_magnitude
 	else:
 		knockback.x = 0
 	if abs(knockback.z) > 0.01:
 		var direction = sign(knockback.z)  # -1, 0, o 1
-		var reduction = abs(delta * gravity)
-		var new_magnitude = max(0, abs(knockback.z) - reduction)
+		var new_magnitude = max(0, abs(knockback.z) - abs(delta * gravity*4))
 		knockback.z = direction * new_magnitude
 	else:
 		knockback.z = 0
@@ -95,5 +93,5 @@ func _physics_process(delta: float) -> void:
 				
 
 func apply_knockback(fuerza):
-	knockback += fuerza
+	knockback += fuerza * -0.7
 	velocity.y = fuerza.y
