@@ -127,45 +127,6 @@ shape = SubResource("BoxShape3D_x5vut")
 [node name="tablaCortarModel" parent="TablaRigidbody" groups=["pickup", "pickuplocal"] instance=ExtResource("6_x5vut")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
-[node name="TablaRigidbody2" type="RigidBody3D" parent="." groups=["pickuplocal"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.954329, 5.0859833, 9.994789)
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-script = ExtResource("7_v718u")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TablaRigidbody2" groups=["pickuplocal"]]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-shape = SubResource("BoxShape3D_x5vut")
-
-[node name="tablaCortarModel" parent="TablaRigidbody2" groups=["pickup", "pickuplocal"] instance=ExtResource("6_x5vut")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-
-[node name="TablaRigidbody3" type="RigidBody3D" parent="." groups=["pickuplocal"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5322318, 5.0859833, 10.374462)
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-script = ExtResource("7_v718u")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TablaRigidbody3" groups=["pickuplocal"]]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-shape = SubResource("BoxShape3D_x5vut")
-
-[node name="tablaCortarModel" parent="TablaRigidbody3" groups=["pickup", "pickuplocal"] instance=ExtResource("6_x5vut")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-
-[node name="TablaRigidbody4" type="RigidBody3D" parent="." groups=["pickuplocal"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.531919, 5.0859833, -11.583937)
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-script = ExtResource("7_v718u")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TablaRigidbody4" groups=["pickuplocal"]]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-shape = SubResource("BoxShape3D_x5vut")
-
-[node name="tablaCortarModel" parent="TablaRigidbody4" groups=["pickup", "pickuplocal"] instance=ExtResource("6_x5vut")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-
 [node name="Refri2" parent="." instance=ExtResource("7_akgxs")]
 transform = Transform3D(4.045, 0, 0, 0, 4.045, 0, 0, 0, 4.045, -7.0293407, 0.80565166, -9.708527)
 

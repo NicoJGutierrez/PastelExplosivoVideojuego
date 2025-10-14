@@ -11,6 +11,7 @@ extends CharacterBody3D
 @export var player_number = "1"
 
 @onready var mesh: MeshInstance3D = $MeshInstance3D
+var knockback = Vector3(0,0,0)
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -38,8 +39,23 @@ func _physics_process(delta: float) -> void:
 
 	# --- VELOCIDAD SUAVIZADA ---
 	var target_velocity = input_dir * speed
-	velocity.x = lerp(velocity.x, target_velocity.x, acceleration * delta)
-	velocity.z = lerp(velocity.z, target_velocity.z, acceleration * delta)
+	velocity.x = lerp(velocity.x, target_velocity.x, acceleration * delta) + knockback.x
+	velocity.z = lerp(velocity.z, target_velocity.z, acceleration * delta) + knockback.z
+
+	if abs(knockback.x) > 0.01:
+		var direction = sign(knockback.x)  # -1, 0, o 1
+		var reduction = abs(delta * gravity)
+		var new_magnitude = max(0, abs(knockback.x) - reduction)
+		knockback.x = direction * new_magnitude
+	else:
+		knockback.x = 0
+	if abs(knockback.z) > 0.01:
+		var direction = sign(knockback.z)  # -1, 0, o 1
+		var reduction = abs(delta * gravity)
+		var new_magnitude = max(0, abs(knockback.z) - reduction)
+		knockback.z = direction * new_magnitude
+	else:
+		knockback.z = 0
 
 	# --- ROTAR EL personaje entero HACIA LA DIRECCIÓN DE MOVIMIENTO ---
 	if input_dir.length() > 0.1:
@@ -79,4 +95,5 @@ func _physics_process(delta: float) -> void:
 				
 
 func apply_knockback(fuerza):
-	velocity += fuerza
+	knockback += fuerza
+	velocity.y = fuerza.y
