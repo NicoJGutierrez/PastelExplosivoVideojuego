@@ -77,3 +77,7 @@ func _physics_process(delta: float) -> void:
 					i.apply_central_force(force)
 				i.set_axis_velocity(Vector3.ZERO)
 				
+
+func apply_knockback(fuerza):
+	velocity += fuerza
+	print("a")

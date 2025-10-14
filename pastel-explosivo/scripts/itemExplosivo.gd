@@ -1,7 +1,6 @@
 extends RigidBody3D
 
-@export var chance_to_boom = 100
-@export var explosion: PackedScene
+@export var chance_to_boom = 50
 var current_boom = 0
 
 func _ready():
@@ -12,17 +11,20 @@ func _physics_process(delta):
 	if self.get_parent().get_parent().is_in_group("player"):
 		for node in get_colliding_bodies():
 			if node.is_in_group("player") and node != get_parent().get_parent():
-				explode(100)
+				explode(3)
 			elif node.is_in_group("pickuplocal"):
-				explode(160)
+				explode(4)
 			elif not node.is_in_group("player"):
 				current_boom += 1
 		if current_boom == chance_to_boom:
 				current_boom = 0
-				explode(50)
+				explode(2)
 			
 func explode(force):
-	var nueva_explosion = explosion.instantiate()
-	add_child(nueva_explosion)
+	var nueva_explosion = preload("res://scripts/explosion.tscn").instantiate()
+	
 	nueva_explosion.position = self.position
+	nueva_explosion.force = force
+	
+	add_child(nueva_explosion)
 	pass

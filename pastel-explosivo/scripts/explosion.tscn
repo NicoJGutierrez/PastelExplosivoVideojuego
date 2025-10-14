@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c8dft31kuyw15" path="res://texturas/explosiontexture.png" id="1_q7epf"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g4f05"]
+radius = 2.0
 
 [sub_resource type="Curve" id="Curve_vxas0"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.8391013, 0.0, 0, 0]
@@ -95,7 +96,7 @@ draw_pass_1 = SubResource("QuadMesh_l04k4")
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_rabvo")
 emitting = false
-amount = 20
+amount = 30
 lifetime = 0.6
 one_shot = true
 explosiveness = 1.0
