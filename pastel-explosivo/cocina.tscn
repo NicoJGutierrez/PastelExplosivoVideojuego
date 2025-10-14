@@ -1,8 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://c4lh5vpo6iv8n"]
+[gd_scene load_steps=19 format=3 uid="uid://c4lh5vpo6iv8n"]
 
 [ext_resource type="Texture2D" uid="uid://tielynu17lau" path="res://texturas/getReal.jpg" id="1_ds2w5"]
 [ext_resource type="Script" uid="uid://bbe2xu120ur2x" path="res://scripts/cocina.gd" id="1_hbqs7"]
-[ext_resource type="PackedScene" uid="uid://uelcmvfqa86g" path="res://scripts/explosion.tscn" id="2_8sgn3"]
 [ext_resource type="Script" uid="uid://dq1ccjegwg1fk" path="res://scripts/personaje.gd" id="2_vwpi2"]
 [ext_resource type="ArrayMesh" uid="uid://cttlhqohaqija" path="res://modelos3d/PlayerModel.obj" id="3_vwpi2"]
 [ext_resource type="PackedScene" uid="uid://cmxs2ap2rnbh0" path="res://modelos3d/maguito_p_1.tscn" id="5_akgxs"]
@@ -120,7 +119,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9844203, 5.0859833, 2.9959
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("7_v718u")
-explosion = ExtResource("2_8sgn3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TablaRigidbody" groups=["pickuplocal"]]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)

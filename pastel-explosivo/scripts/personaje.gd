@@ -80,4 +80,3 @@ func _physics_process(delta: float) -> void:
 
 func apply_knockback(fuerza):
 	velocity += fuerza
-	print("a")

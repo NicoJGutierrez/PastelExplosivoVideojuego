@@ -23,8 +23,8 @@ func _physics_process(delta):
 func explode(force):
 	var nueva_explosion = preload("res://scripts/explosion.tscn").instantiate()
 	
-	nueva_explosion.position = self.position
 	nueva_explosion.force = force
 	
-	add_child(nueva_explosion)
-	pass
+	get_tree().root.add_child(nueva_explosion)
+	nueva_explosion.global_position = self.global_position
+	queue_free()
