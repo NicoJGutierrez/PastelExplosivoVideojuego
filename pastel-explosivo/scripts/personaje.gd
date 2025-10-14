@@ -8,6 +8,7 @@ extends CharacterBody3D
 @export var gravity: float = 40.0
 @export var force_strength: float = 30.0
 @export var pickup_damping_distance: float = 1.0
+@export var player_number = "1"
 
 @onready var mesh: MeshInstance3D = $MeshInstance3D
 
@@ -18,19 +19,19 @@ func _physics_process(delta: float) -> void:
 	# --- GRAVEDAD ---
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-	elif Input.is_action_just_pressed("jump"):
+	elif Input.is_action_just_pressed("jump_p" + player_number):
 		velocity.y = jump_force
 
 	# --- ENTRADA DE MOVIMIENTO ---
 	var input_dir := Vector3.ZERO
 
-	if Input.is_action_pressed("move_forward"):
+	if Input.is_action_pressed("move_forward_p" + player_number):
 		input_dir.z -= 1
-	if Input.is_action_pressed("move_back"):
+	if Input.is_action_pressed("move_back_p" + player_number):
 		input_dir.z += 1
-	if Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed("move_left_p" + player_number):
 		input_dir.x -= 1
-	if Input.is_action_pressed("move_right"):
+	if Input.is_action_pressed("move_right_p" + player_number):
 		input_dir.x += 1
 
 	input_dir = input_dir.normalized()
@@ -50,7 +51,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	
-	if Input.is_action_just_pressed("pickup"):
+	if Input.is_action_just_pressed("pickup_p" + player_number):
 		if $"pickup point".get_children() != []:
 			for i in $"pickup point".get_children():
 				i.reparent(self.get_parent())

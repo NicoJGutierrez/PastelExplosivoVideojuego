@@ -85,7 +85,6 @@ script = ExtResource("1_moscx")
 shape = SubResource("SphereShape3D_g4f05")
 
 [node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.48543, 0, 0)
 emitting = false
 amount = 1
 lifetime = 0.1
@@ -94,7 +93,6 @@ process_material = SubResource("ParticleProcessMaterial_m5xho")
 draw_pass_1 = SubResource("QuadMesh_l04k4")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.48543, 0, 0)
 material_override = SubResource("StandardMaterial3D_rabvo")
 emitting = false
 amount = 20

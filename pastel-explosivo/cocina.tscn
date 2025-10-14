@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c4lh5vpo6iv8n"]
+[gd_scene load_steps=20 format=3 uid="uid://c4lh5vpo6iv8n"]
 
 [ext_resource type="Texture2D" uid="uid://tielynu17lau" path="res://texturas/getReal.jpg" id="1_ds2w5"]
 [ext_resource type="Script" uid="uid://bbe2xu120ur2x" path="res://scripts/cocina.gd" id="1_hbqs7"]
@@ -7,6 +7,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cttlhqohaqija" path="res://modelos3d/PlayerModel.obj" id="3_vwpi2"]
 [ext_resource type="PackedScene" uid="uid://cmxs2ap2rnbh0" path="res://modelos3d/maguito_p_1.tscn" id="5_akgxs"]
 [ext_resource type="PackedScene" uid="uid://cphjdhf0syy8c" path="res://modelos3d/mesita.tscn" id="5_x5vut"]
+[ext_resource type="PackedScene" uid="uid://cu4vw5ikmofd2" path="res://modelos3d/maguito_p_2.tscn" id="6_7hwgq"]
 [ext_resource type="PackedScene" uid="uid://d1jdofkn04kp1" path="res://modelos3d/tabla_cortar.tscn" id="6_x5vut"]
 [ext_resource type="PackedScene" uid="uid://dj5p3fbufmvuy" path="res://modelos3d/refri.tscn" id="7_akgxs"]
 [ext_resource type="Script" uid="uid://cerok56axa82h" path="res://scripts/itemExplosivo.gd" id="7_v718u"]
@@ -52,30 +53,57 @@ shape = SubResource("BoxShape3D_mlix7")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Mapa"]
 transform = Transform3D(-0.49410877, 0.7879441, -0.36742437, 0, 0.42261824, 0.9063078, 0.86940014, 0.4478146, -0.20881937, -55.783886, 37.239273, -4.109392)
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["player"]]
+[node name="P1" type="CharacterBody3D" parent="." groups=["player"]]
 process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4967365, 0)
 script = ExtResource("2_vwpi2")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="P1"]
 visible = false
 layers = 2
 mesh = ExtResource("3_vwpi2")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="P1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3393555, 0)
 shape = SubResource("CapsuleShape3D_11nvo")
 
-[node name="pickup point" type="Node3D" parent="CharacterBody3D"]
+[node name="pickup point" type="Node3D" parent="P1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0162377, -3.0216942)
 
-[node name="PickupRange" type="Area3D" parent="CharacterBody3D"]
+[node name="PickupRange" type="Area3D" parent="P1"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/PickupRange"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="P1/PickupRange"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5587559, -1.2778189)
 shape = SubResource("CapsuleShape3D_x5vut")
 
-[node name="maguito_p1_mesh" parent="CharacterBody3D" instance=ExtResource("5_akgxs")]
+[node name="maguito_p1_mesh" parent="P1" instance=ExtResource("5_akgxs")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+
+[node name="P2" type="CharacterBody3D" parent="." groups=["player"]]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.31421, 1.4967365, 4.680461)
+script = ExtResource("2_vwpi2")
+player_number = "2"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="P2"]
+visible = false
+layers = 2
+mesh = ExtResource("3_vwpi2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="P2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3393555, 0)
+shape = SubResource("CapsuleShape3D_11nvo")
+
+[node name="pickup point" type="Node3D" parent="P2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0162377, -3.0216942)
+
+[node name="PickupRange" type="Area3D" parent="P2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="P2/PickupRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5587559, -1.2778189)
+shape = SubResource("CapsuleShape3D_x5vut")
+
+[node name="maguito_p2" parent="P2" instance=ExtResource("6_7hwgq")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 
 [node name="mesita2" parent="." instance=ExtResource("5_x5vut")]
