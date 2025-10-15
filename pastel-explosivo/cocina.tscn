@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c4lh5vpo6iv8n"]
+[gd_scene load_steps=23 format=3 uid="uid://c4lh5vpo6iv8n"]
 
 [ext_resource type="Texture2D" uid="uid://tielynu17lau" path="res://texturas/getReal.jpg" id="1_ds2w5"]
 [ext_resource type="Script" uid="uid://bbe2xu120ur2x" path="res://scripts/cocina.gd" id="1_hbqs7"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://b1yhhybk4xdd" path="res://ingredientes/huevo.tscn" id="11_rabvo"]
 [ext_resource type="PackedScene" uid="uid://cvmw46f0qfbck" path="res://ingredientes/mantequilla.tscn" id="12_hyg3g"]
 [ext_resource type="PackedScene" uid="uid://b71rnvqdrd6pk" path="res://ingredientes/leche.tscn" id="13_jn33y"]
+[ext_resource type="Script" uid="uid://ce4xu8p6bxnbi" path="res://scripts/spawner_parent.gd" id="14_hyg3g"]
+[ext_resource type="PackedScene" uid="uid://b7yl2lhkpw150" path="res://scripts/spawner.tscn" id="14_rabvo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfbld"]
 albedo_color = Color(0.61106855, 0.014915431, 0.49780202, 1)
@@ -230,6 +232,15 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="mesita8/StaticBody3D"]
 shape = SubResource("BoxShape3D_a3eri")
 
+[node name="mesita10" parent="." instance=ExtResource("5_x5vut")]
+transform = Transform3D(7.8678093, 0, -0.18568951, 0, 7.8699994, 0, 0.18568951, 0, 7.8678093, 6.0006113, 1.1210508, -10.803556)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="mesita10"]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mesita10/StaticBody3D"]
+shape = SubResource("BoxShape3D_a3eri")
+
 [node name="mesita9" parent="." instance=ExtResource("5_x5vut")]
 transform = Transform3D(7.87, 0, 0, 0, 7.87, 0, 0, 0, 7.87, 5.7560177, 1.1210508, 15.053261)
 
@@ -237,6 +248,15 @@ transform = Transform3D(7.87, 0, 0, 0, 7.87, 0, 0, 0, 7.87, 5.7560177, 1.1210508
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="mesita9/StaticBody3D"]
+shape = SubResource("BoxShape3D_a3eri")
+
+[node name="mesita11" parent="." instance=ExtResource("5_x5vut")]
+transform = Transform3D(7.8678093, 0, -0.18568951, 0, 7.8699994, 0, 0.18568951, 0, 7.8678093, 10.578348, 1.1210508, -3.0413275)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="mesita11"]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mesita11/StaticBody3D"]
 shape = SubResource("BoxShape3D_a3eri")
 
 [node name="Huevo" parent="." instance=ExtResource("11_rabvo")]
@@ -247,6 +267,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3974147, 5.8755655, 16.7093
 
 [node name="Leche" parent="." instance=ExtResource("13_jn33y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7734337, 5.297279, 11.059616)
+
+[node name="spawner_parent" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.90756, 5.4576797, -2.4589396)
+script = ExtResource("14_hyg3g")
+
+[node name="Spawner" parent="spawner_parent" instance=ExtResource("14_rabvo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.079481, 0, 17.814205)
+
+[node name="Spawner2" parent="spawner_parent" instance=ExtResource("14_rabvo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.577737, 0, -7.762229)
+
+[node name="Spawner3" parent="spawner_parent" instance=ExtResource("14_rabvo")]
 
 [node name="harina2" parent="." instance=ExtResource("3_rabvo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.923397, 5.056051, 16.394684)
