@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c4lh5vpo6iv8n"]
+[gd_scene load_steps=25 format=3 uid="uid://c4lh5vpo6iv8n"]
 
 [ext_resource type="Texture2D" uid="uid://tielynu17lau" path="res://texturas/getReal.jpg" id="1_ds2w5"]
 [ext_resource type="Script" uid="uid://bbe2xu120ur2x" path="res://scripts/cocina.gd" id="1_hbqs7"]
@@ -22,7 +22,13 @@ albedo_color = Color(0.61106855, 0.014915431, 0.49780202, 1)
 albedo_texture = ExtResource("1_ds2w5")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mlix7"]
-size = Vector3(100, 1, 100)
+size = Vector3(100, 1, 60)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hyg3g"]
+size = Vector3(2, 64, 64)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jn33y"]
+size = Vector3(120, 64, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_11nvo"]
 radius = 1.1425781
@@ -45,11 +51,27 @@ script = ExtResource("1_hbqs7")
 [node name="Mapa" type="StaticBody3D" parent="."]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Mapa"]
-transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, -0.0009860992, 0, -0.023591518)
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 60, -0.0009860992, 0, -0.023591518)
 material = SubResource("StandardMaterial3D_xfbld")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mapa"]
 shape = SubResource("BoxShape3D_mlix7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Mapa"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 20, 0)
+shape = SubResource("BoxShape3D_hyg3g")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Mapa"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 20, 0)
+shape = SubResource("BoxShape3D_hyg3g")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Mapa"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 30)
+shape = SubResource("BoxShape3D_jn33y")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Mapa"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, -30)
+shape = SubResource("BoxShape3D_jn33y")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Mapa"]
 transform = Transform3D(-0.49410877, 0.7879441, -0.36742437, 0, 0.42261824, 0.9063078, 0.86940014, 0.4478146, -0.20881937, -55.783886, 37.239273, -4.109392)
@@ -176,7 +198,8 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.90107703, 0.4336591, 0, -0.4336591, 0.90107703, 0, 24.331, 34.00133)
+transform = Transform3D(1, -8.351872e-23, -4.371139e-08, 4.238216e-08, 0.24473207, 0.9695907, 1.0697579e-08, -0.9695907, 0.24473207, 0, 24.331, 15)
+fov = 106.87499
 
 [node name="mesita3" parent="." instance=ExtResource("5_x5vut")]
 transform = Transform3D(7.87, 0, 0, 0, 7.87, 0, 0, 0, 7.87, -7.930361, 1.1210508, 7.149741)
@@ -284,7 +307,7 @@ objeto = ExtResource("12_hyg3g")
 objeto = ExtResource("13_jn33y")
 
 [node name="Timer" type="Timer" parent="spawner_parent"]
-wait_time = 3.0
+wait_time = 5.0
 autostart = true
 
 [node name="harina2" parent="." instance=ExtResource("3_rabvo")]
