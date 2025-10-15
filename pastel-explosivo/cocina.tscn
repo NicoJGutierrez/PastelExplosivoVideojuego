@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c4lh5vpo6iv8n"]
+[gd_scene load_steps=28 format=3 uid="uid://c4lh5vpo6iv8n"]
 
 [ext_resource type="Texture2D" uid="uid://tielynu17lau" path="res://texturas/getReal.jpg" id="1_ds2w5"]
 [ext_resource type="Script" uid="uid://bbe2xu120ur2x" path="res://scripts/cocina.gd" id="1_hbqs7"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://b71rnvqdrd6pk" path="res://ingredientes/leche.tscn" id="13_jn33y"]
 [ext_resource type="Script" uid="uid://ce4xu8p6bxnbi" path="res://scripts/spawner_parent.gd" id="14_hyg3g"]
 [ext_resource type="PackedScene" uid="uid://b7yl2lhkpw150" path="res://scripts/spawner.tscn" id="14_rabvo"]
+[ext_resource type="ArrayMesh" uid="uid://c4nhbx67ijele" path="res://modelos3d/batidoraColor.obj" id="19_fdl3p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfbld"]
 albedo_color = Color(0.61106855, 0.014915431, 0.49780202, 1)
@@ -366,5 +367,11 @@ autostart = true
 
 [node name="harina2" parent="." instance=ExtResource("3_rabvo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.923397, 5.056051, 16.394684)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(-0.103717856, 0, 0.23295408, 0, 0.255, 0, -0.23295408, 0, -0.103717856, -8.338306, 4.907541, 11.931002)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+mesh = ExtResource("19_fdl3p")
 
 [connection signal="timeout" from="spawner_parent/Timer" to="spawner_parent" method="_on_timer_timeout"]
