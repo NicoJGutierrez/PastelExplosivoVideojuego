@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c4lh5vpo6iv8n"]
+[gd_scene load_steps=27 format=3 uid="uid://c4lh5vpo6iv8n"]
 
 [ext_resource type="Texture2D" uid="uid://tielynu17lau" path="res://texturas/getReal.jpg" id="1_ds2w5"]
 [ext_resource type="Script" uid="uid://bbe2xu120ur2x" path="res://scripts/cocina.gd" id="1_hbqs7"]
@@ -9,8 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://cphjdhf0syy8c" path="res://modelos3d/mesita.tscn" id="5_x5vut"]
 [ext_resource type="PackedScene" uid="uid://cu4vw5ikmofd2" path="res://modelos3d/maguito_p_2.tscn" id="6_7hwgq"]
 [ext_resource type="PackedScene" uid="uid://dj5p3fbufmvuy" path="res://modelos3d/refri.tscn" id="7_akgxs"]
+[ext_resource type="PackedScene" uid="uid://dn1ij0k8ffslk" path="res://modelos3d/maguito_p_3.tscn" id="7_jn33y"]
 [ext_resource type="PackedScene" uid="uid://crrhovsrovn68" path="res://ingredientes/tabla_rigidbody.tscn" id="8_g4f05"]
 [ext_resource type="Script" uid="uid://do5oqdjeqlxcp" path="res://scripts/pause_menu.gd" id="8_x5vut"]
+[ext_resource type="PackedScene" uid="uid://b4vn5rsh2ghue" path="res://modelos3d/maguito_p_4.tscn" id="8_x14dr"]
 [ext_resource type="PackedScene" uid="uid://b1yhhybk4xdd" path="res://ingredientes/huevo.tscn" id="11_rabvo"]
 [ext_resource type="PackedScene" uid="uid://cvmw46f0qfbck" path="res://ingredientes/mantequilla.tscn" id="12_hyg3g"]
 [ext_resource type="PackedScene" uid="uid://b71rnvqdrd6pk" path="res://ingredientes/leche.tscn" id="13_jn33y"]
@@ -128,6 +130,58 @@ shape = SubResource("CapsuleShape3D_x5vut")
 
 [node name="maguito_p2" parent="P2" instance=ExtResource("6_7hwgq")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+
+[node name="P3" type="CharacterBody3D" parent="." groups=["player"]]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.404663, 1.4967365, 7.6054516)
+script = ExtResource("2_vwpi2")
+player_number = "3"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="P3"]
+visible = false
+layers = 2
+mesh = ExtResource("3_vwpi2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="P3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3393555, 0)
+shape = SubResource("CapsuleShape3D_11nvo")
+
+[node name="pickup point" type="Node3D" parent="P3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0162377, -3.0216942)
+
+[node name="PickupRange" type="Area3D" parent="P3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="P3/PickupRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5587559, -1.2778189)
+shape = SubResource("CapsuleShape3D_x5vut")
+
+[node name="maguito_p3" parent="P3" instance=ExtResource("7_jn33y")]
+
+[node name="P4" type="CharacterBody3D" parent="." groups=["player"]]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.045177, 1.4967365, 10.652512)
+script = ExtResource("2_vwpi2")
+player_number = "4"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="P4"]
+visible = false
+layers = 2
+mesh = ExtResource("3_vwpi2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="P4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3393555, 0)
+shape = SubResource("CapsuleShape3D_11nvo")
+
+[node name="pickup point" type="Node3D" parent="P4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0162377, -3.0216942)
+
+[node name="PickupRange" type="Area3D" parent="P4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="P4/PickupRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5587559, -1.2778189)
+shape = SubResource("CapsuleShape3D_x5vut")
+
+[node name="maguito_p5" parent="P4" instance=ExtResource("8_x14dr")]
 
 [node name="mesita2" parent="." instance=ExtResource("5_x5vut")]
 transform = Transform3D(7.87, 0, 0, 0, 7.87, 0, 0, 0, 7.87, -7.930361, 1.1210508, 3.1556907)

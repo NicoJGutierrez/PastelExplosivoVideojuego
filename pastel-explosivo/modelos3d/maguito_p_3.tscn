@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn1ij0k8ffslk"]
+
+[ext_resource type="PackedScene" uid="uid://r8a4qoj1t8xm" path="res://modelos3d/maguito_p3.glb" id="1_nehj5"]
+
+[node name="maguito_p3" instance=ExtResource("1_nehj5")]
+
+[node name="Maguito explosivo_002" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
