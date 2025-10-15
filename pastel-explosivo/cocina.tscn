@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dj5p3fbufmvuy" path="res://modelos3d/refri.tscn" id="7_akgxs"]
 [ext_resource type="Script" uid="uid://cerok56axa82h" path="res://scripts/itemExplosivo.gd" id="7_v718u"]
 [ext_resource type="Script" uid="uid://do5oqdjeqlxcp" path="res://scripts/pause_menu.gd" id="8_x5vut"]
-[ext_resource type="Script" uid="uid://bcf6bwm0o8t3s" path="res://huevo_rigid_body_3d.gd" id="12_4vs6k"]
+[ext_resource type="Script" path="res://huevo_rigid_body_3d.gd" id="12_4vs6k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfbld"]
 albedo_color = Color(0.61106855, 0.014915431, 0.49780202, 1)
@@ -51,7 +51,6 @@ height = 2.5112305
 
 [node name="Node3D" type="Node3D"]
 process_mode = 3
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24507046, 0)
 script = ExtResource("1_hbqs7")
 
 [node name="Mapa" type="StaticBody3D" parent="."]
