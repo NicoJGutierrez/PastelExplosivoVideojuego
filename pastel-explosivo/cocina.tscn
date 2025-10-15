@@ -46,6 +46,7 @@ radius = 1.0917969
 height = 2.5112305
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hyg3g"]
+size = Vector3(1, 0.53100586, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jn33y"]
 
@@ -164,19 +165,6 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 shape = SubResource("BoxShape3D_x5vut")
 
 [node name="tablaCortarModel" parent="TablaRigidbody3" groups=["pickup", "pickuplocal"] instance=ExtResource("6_x5vut")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-
-[node name="TablaRigidbody4" type="RigidBody3D" parent="." groups=["pickuplocal"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.531919, 5.0859833, -11.583937)
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-script = ExtResource("7_v718u")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TablaRigidbody4" groups=["pickuplocal"]]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-shape = SubResource("BoxShape3D_x5vut")
-
-[node name="tablaCortarModel" parent="TablaRigidbody4" groups=["pickup", "pickuplocal"] instance=ExtResource("6_x5vut")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="Refri2" parent="." instance=ExtResource("7_akgxs")]
@@ -299,36 +287,32 @@ collision_mask = 2
 shape = SubResource("BoxShape3D_a3eri")
 
 [node name="HuevoRigidBody3D" type="RigidBody3D" parent="." groups=["pickuplocal"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6946592, 5.384506, 10.128966)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.510682, 6.087726, 10.128966)
 script = ExtResource("12_4vs6k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HuevoRigidBody3D" groups=["pickuplocal"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54379106, 0.7418294, 0.9793596)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24926138, 0)
 shape = SubResource("CapsuleShape3D_7hwgq")
 
 [node name="huevo2" parent="HuevoRigidBody3D" groups=["pickuplocal"] instance=ExtResource("4_hyg3g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.56079555, 0.47026253, 1.0211983)
 
 [node name="HuevoRigidBody3D2" type="RigidBody3D" parent="." groups=["pickuplocal"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3893185, 10.769012, 20.257933)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3974147, 5.8755655, 16.709356)
 script = ExtResource("12_4vs6k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HuevoRigidBody3D2" groups=["pickuplocal"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8723793, -4.209772, -4.757185)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9631491, 0)
 shape = SubResource("BoxShape3D_hyg3g")
 
 [node name="mantequilla2" parent="HuevoRigidBody3D2" instance=ExtResource("5_jn33y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8704872, -5.277661, -4.735611)
 
 [node name="HuevoRigidBody3D3" type="RigidBody3D" parent="." groups=["pickuplocal"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2134905, 9.822033, 25.651287)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7734337, 5.297279, 11.059616)
 script = ExtResource("12_4vs6k")
 
 [node name="leche2" parent="HuevoRigidBody3D3" instance=ExtResource("6_x14dr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7396383, -4.7659826, -14.481711)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HuevoRigidBody3D3" groups=["pickuplocal"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5929284, -4.168448, -14.478881)
 shape = SubResource("BoxShape3D_jn33y")
 
 [node name="harina2" parent="." instance=ExtResource("3_rabvo")]
