@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxelykkj32tw8"]
+
+[ext_resource type="Script" uid="uid://cerok56axa82h" path="res://scripts/itemExplosivo.gd" id="1_mrfwy"]
+[ext_resource type="PackedScene" uid="uid://c6h8w3t4cdqgc" path="res://modelos3d/harina_2.tscn" id="2_8mepd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_46lo3"]
+size = Vector3(1.8360596, 2.0925293, 1.1922607)
+
+[node name="harina" type="RigidBody3D" groups=["pickuplocal"]]
+script = ExtResource("1_mrfwy")
+
+[node name="harina2" parent="." instance=ExtResource("2_8mepd")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["pickuplocal"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00970459, 1.107688, 0.012634277)
+shape = SubResource("BoxShape3D_46lo3")
