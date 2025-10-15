@@ -8,7 +8,7 @@ func _ready():
 	max_contacts_reported = 5
 	
 func _physics_process(delta):
-	if self.get_parent().get_parent().is_in_group("player"):
+	if self.get_parent().get_parent() != null and self.get_parent().get_parent().is_in_group("player"):
 		for node in get_colliding_bodies():
 			if node.is_in_group("player") and node != get_parent().get_parent():
 				explode(3)
