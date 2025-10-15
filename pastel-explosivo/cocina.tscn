@@ -1,21 +1,19 @@
-[gd_scene load_steps=27 format=3 uid="uid://c4lh5vpo6iv8n"]
+[gd_scene load_steps=21 format=3 uid="uid://c4lh5vpo6iv8n"]
 
 [ext_resource type="Texture2D" uid="uid://tielynu17lau" path="res://texturas/getReal.jpg" id="1_ds2w5"]
 [ext_resource type="Script" uid="uid://bbe2xu120ur2x" path="res://scripts/cocina.gd" id="1_hbqs7"]
 [ext_resource type="Script" uid="uid://dq1ccjegwg1fk" path="res://scripts/personaje.gd" id="2_vwpi2"]
 [ext_resource type="PackedScene" uid="uid://dd7mep4oyrk0l" path="res://modelos3d/harina.glb" id="3_rabvo"]
 [ext_resource type="ArrayMesh" uid="uid://cttlhqohaqija" path="res://modelos3d/PlayerModel.obj" id="3_vwpi2"]
-[ext_resource type="PackedScene" uid="uid://cd2ds3k6pkrg7" path="res://modelos3d/huevo.glb" id="4_hyg3g"]
 [ext_resource type="PackedScene" uid="uid://cmxs2ap2rnbh0" path="res://modelos3d/maguito_p_1.tscn" id="5_akgxs"]
-[ext_resource type="PackedScene" uid="uid://d4gi5on3lgy5g" path="res://modelos3d/mantequilla.glb" id="5_jn33y"]
 [ext_resource type="PackedScene" uid="uid://cphjdhf0syy8c" path="res://modelos3d/mesita.tscn" id="5_x5vut"]
 [ext_resource type="PackedScene" uid="uid://cu4vw5ikmofd2" path="res://modelos3d/maguito_p_2.tscn" id="6_7hwgq"]
-[ext_resource type="PackedScene" uid="uid://d1jdofkn04kp1" path="res://modelos3d/tabla_cortar.tscn" id="6_x5vut"]
-[ext_resource type="PackedScene" uid="uid://mc0foly8i2yh" path="res://modelos3d/leche.glb" id="6_x14dr"]
 [ext_resource type="PackedScene" uid="uid://dj5p3fbufmvuy" path="res://modelos3d/refri.tscn" id="7_akgxs"]
-[ext_resource type="Script" uid="uid://cerok56axa82h" path="res://scripts/itemExplosivo.gd" id="7_v718u"]
+[ext_resource type="PackedScene" uid="uid://crrhovsrovn68" path="res://ingredientes/tabla_rigidbody.tscn" id="8_g4f05"]
 [ext_resource type="Script" uid="uid://do5oqdjeqlxcp" path="res://scripts/pause_menu.gd" id="8_x5vut"]
-[ext_resource type="Script" uid="uid://bcf6bwm0o8t3s" path="res://huevo_rigid_body_3d.gd" id="12_4vs6k"]
+[ext_resource type="PackedScene" uid="uid://b1yhhybk4xdd" path="res://ingredientes/huevo.tscn" id="11_rabvo"]
+[ext_resource type="PackedScene" uid="uid://cvmw46f0qfbck" path="res://ingredientes/mantequilla.tscn" id="12_hyg3g"]
+[ext_resource type="PackedScene" uid="uid://b71rnvqdrd6pk" path="res://ingredientes/leche.tscn" id="13_jn33y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfbld"]
 albedo_color = Color(0.61106855, 0.014915431, 0.49780202, 1)
@@ -35,20 +33,8 @@ height = 7.1499023
 [sub_resource type="BoxShape3D" id="BoxShape3D_a3eri"]
 size = Vector3(0.45, 1, 0.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_x5vut"]
-size = Vector3(0.6496582, 0.08502197, 1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_hbqs7"]
 size = Vector3(1.32, 4.8, 1.32)
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7hwgq"]
-radius = 1.0917969
-height = 2.5112305
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_hyg3g"]
-size = Vector3(1, 0.53100586, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jn33y"]
 
 [node name="Node3D" type="Node3D"]
 process_mode = 3
@@ -128,44 +114,11 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="mesita2/StaticBody3D"]
 shape = SubResource("BoxShape3D_a3eri")
 
-[node name="TablaRigidbody" type="RigidBody3D" parent="." groups=["pickuplocal"]]
+[node name="TablaRigidbody2" parent="." instance=ExtResource("8_g4f05")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9844203, 5.0859833, 2.9959807)
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-script = ExtResource("7_v718u")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TablaRigidbody" groups=["pickuplocal"]]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-shape = SubResource("BoxShape3D_x5vut")
-
-[node name="tablaCortarModel" parent="TablaRigidbody" groups=["pickup", "pickuplocal"] instance=ExtResource("6_x5vut")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-
-[node name="TablaRigidbody2" type="RigidBody3D" parent="." groups=["pickuplocal"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.121862, 5.0859833, 14.742104)
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-script = ExtResource("7_v718u")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TablaRigidbody2" groups=["pickuplocal"]]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-shape = SubResource("BoxShape3D_x5vut")
-
-[node name="tablaCortarModel" parent="TablaRigidbody2" groups=["pickup", "pickuplocal"] instance=ExtResource("6_x5vut")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-
-[node name="TablaRigidbody3" type="RigidBody3D" parent="." groups=["pickuplocal"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.014163, 5.0859833, 10.374462)
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-script = ExtResource("7_v718u")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TablaRigidbody3" groups=["pickuplocal"]]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-shape = SubResource("BoxShape3D_x5vut")
-
-[node name="tablaCortarModel" parent="TablaRigidbody3" groups=["pickup", "pickuplocal"] instance=ExtResource("6_x5vut")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+[node name="TablaRigidbody3" parent="." instance=ExtResource("8_g4f05")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9844203, 5.0859833, 7.9082494)
 
 [node name="Refri2" parent="." instance=ExtResource("7_akgxs")]
 transform = Transform3D(-0.04038182, 0, 4.0447984, 0, 4.045, 0, -4.0447984, 0, -0.04038182, -7.075199, 0.82628536, -1.7396879)
@@ -286,34 +239,14 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="mesita9/StaticBody3D"]
 shape = SubResource("BoxShape3D_a3eri")
 
-[node name="HuevoRigidBody3D" type="RigidBody3D" parent="." groups=["pickuplocal"]]
+[node name="Huevo" parent="." instance=ExtResource("11_rabvo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.510682, 6.087726, 10.128966)
-script = ExtResource("12_4vs6k")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HuevoRigidBody3D" groups=["pickuplocal"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24926138, 0)
-shape = SubResource("CapsuleShape3D_7hwgq")
-
-[node name="huevo2" parent="HuevoRigidBody3D" groups=["pickuplocal"] instance=ExtResource("4_hyg3g")]
-
-[node name="HuevoRigidBody3D2" type="RigidBody3D" parent="." groups=["pickuplocal"]]
+[node name="Mantequilla" parent="." instance=ExtResource("12_hyg3g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3974147, 5.8755655, 16.709356)
-script = ExtResource("12_4vs6k")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HuevoRigidBody3D2" groups=["pickuplocal"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9631491, 0)
-shape = SubResource("BoxShape3D_hyg3g")
-
-[node name="mantequilla2" parent="HuevoRigidBody3D2" instance=ExtResource("5_jn33y")]
-
-[node name="HuevoRigidBody3D3" type="RigidBody3D" parent="." groups=["pickuplocal"]]
+[node name="Leche" parent="." instance=ExtResource("13_jn33y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7734337, 5.297279, 11.059616)
-script = ExtResource("12_4vs6k")
-
-[node name="leche2" parent="HuevoRigidBody3D3" instance=ExtResource("6_x14dr")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HuevoRigidBody3D3" groups=["pickuplocal"]]
-shape = SubResource("BoxShape3D_jn33y")
 
 [node name="harina2" parent="." instance=ExtResource("3_rabvo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.923397, 5.056051, 16.394684)

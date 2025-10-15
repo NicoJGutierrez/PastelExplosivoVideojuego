@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://b71rnvqdrd6pk"]
+
+[ext_resource type="Script" uid="uid://bcf6bwm0o8t3s" path="res://scripts/huevo_rigid_body_3d.gd" id="1_7i8gb"]
+[ext_resource type="PackedScene" uid="uid://mc0foly8i2yh" path="res://modelos3d/leche.glb" id="2_uterc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jn33y"]
+
+[node name="Leche" type="RigidBody3D" groups=["pickuplocal"]]
+script = ExtResource("1_7i8gb")
+
+[node name="leche2" parent="." instance=ExtResource("2_uterc")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["pickuplocal"]]
+shape = SubResource("BoxShape3D_jn33y")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvmw46f0qfbck"]
+
+[ext_resource type="Script" uid="uid://bcf6bwm0o8t3s" path="res://scripts/huevo_rigid_body_3d.gd" id="1_1pvgq"]
+[ext_resource type="PackedScene" uid="uid://d4gi5on3lgy5g" path="res://modelos3d/mantequilla.glb" id="2_t7uaj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hyg3g"]
+size = Vector3(1, 0.53100586, 1)
+
+[node name="Mantequilla" type="RigidBody3D" groups=["pickuplocal"]]
+script = ExtResource("1_1pvgq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["pickuplocal"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9631491, 0)
+shape = SubResource("BoxShape3D_hyg3g")
+
+[node name="mantequilla2" parent="." instance=ExtResource("2_t7uaj")]
