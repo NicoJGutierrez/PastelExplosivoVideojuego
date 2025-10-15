@@ -274,11 +274,20 @@ script = ExtResource("14_hyg3g")
 
 [node name="Spawner" parent="spawner_parent" instance=ExtResource("14_rabvo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.079481, 0, 17.814205)
+objeto = ExtResource("11_rabvo")
 
 [node name="Spawner2" parent="spawner_parent" instance=ExtResource("14_rabvo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.577737, 0, -7.762229)
+objeto = ExtResource("12_hyg3g")
 
 [node name="Spawner3" parent="spawner_parent" instance=ExtResource("14_rabvo")]
+objeto = ExtResource("13_jn33y")
+
+[node name="Timer" type="Timer" parent="spawner_parent"]
+wait_time = 3.0
+autostart = true
 
 [node name="harina2" parent="." instance=ExtResource("3_rabvo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.923397, 5.056051, 16.394684)
+
+[connection signal="timeout" from="spawner_parent/Timer" to="spawner_parent" method="_on_timer_timeout"]
