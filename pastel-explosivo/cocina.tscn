@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dj5p3fbufmvuy" path="res://modelos3d/refri.tscn" id="7_akgxs"]
 [ext_resource type="Script" uid="uid://cerok56axa82h" path="res://scripts/itemExplosivo.gd" id="7_v718u"]
 [ext_resource type="Script" uid="uid://do5oqdjeqlxcp" path="res://scripts/pause_menu.gd" id="8_x5vut"]
-[ext_resource type="Script" path="res://huevo_rigid_body_3d.gd" id="12_4vs6k"]
+[ext_resource type="Script" uid="uid://bcf6bwm0o8t3s" path="res://huevo_rigid_body_3d.gd" id="12_4vs6k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfbld"]
 albedo_color = Color(0.61106855, 0.014915431, 0.49780202, 1)
@@ -141,7 +141,7 @@ shape = SubResource("BoxShape3D_x5vut")
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="TablaRigidbody2" type="RigidBody3D" parent="." groups=["pickuplocal"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.954329, 5.0859833, 9.994789)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.121862, 5.0859833, 14.742104)
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("7_v718u")
@@ -151,10 +151,10 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 shape = SubResource("BoxShape3D_x5vut")
 
 [node name="tablaCortarModel" parent="TablaRigidbody2" groups=["pickup", "pickuplocal"] instance=ExtResource("6_x5vut")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.4002695, 0, 3.7694864)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="TablaRigidbody3" type="RigidBody3D" parent="." groups=["pickuplocal"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5322318, 5.0859833, 10.374462)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.014163, 5.0859833, 10.374462)
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("7_v718u")
@@ -164,7 +164,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 shape = SubResource("BoxShape3D_x5vut")
 
 [node name="tablaCortarModel" parent="TablaRigidbody3" groups=["pickup", "pickuplocal"] instance=ExtResource("6_x5vut")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.4569693, 0, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="TablaRigidbody4" type="RigidBody3D" parent="." groups=["pickuplocal"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.531919, 5.0859833, -11.583937)
