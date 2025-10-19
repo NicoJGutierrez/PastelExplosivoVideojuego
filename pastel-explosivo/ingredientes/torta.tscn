@@ -1,17 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://b25hmy34c0f8a"]
+[gd_scene load_steps=4 format=3 uid="uid://b25hmy34c0f8a"]
 
+[ext_resource type="Script" uid="uid://cerok56axa82h" path="res://scripts/itemExplosivo.gd" id="1_032gu"]
 [ext_resource type="ArrayMesh" uid="uid://bnj2gtjjnvc4p" path="res://modelos3d/torta_1.obj" id="1_yra5n"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_w8wvx"]
-height = 1.0
-radius = 1.2
+height = 1.8
+radius = 2.2
 
 [node name="Torta" type="RigidBody3D" groups=["pickuplocal", "torta"]]
+script = ExtResource("1_032gu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CylinderShape3D_w8wvx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["pickuplocal"]]
-transform = Transform3D(1.445, 0, 0, 0, 1.445, 0, 0, 0, 1.445, -3.42, 0, 0)
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -5.95, 0, 0)
 mesh = ExtResource("1_yra5n")

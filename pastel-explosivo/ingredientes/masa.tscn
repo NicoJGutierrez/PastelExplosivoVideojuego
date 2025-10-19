@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4hb0t2od8s23"]
+[gd_scene load_steps=4 format=3 uid="uid://c4hb0t2od8s23"]
 
 [ext_resource type="ArrayMesh" uid="uid://caum1ga07og5n" path="res://modelos3d/masa1.obj" id="1_7nkyf"]
+[ext_resource type="Script" uid="uid://cerok56axa82h" path="res://scripts/itemExplosivo.gd" id="1_vhpt8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q07ue"]
-size = Vector3(3, 0.5, 2)
+size = Vector3(3, 1, 2)
 
 [node name="Masa1" type="RigidBody3D" groups=["masa", "pickuplocal"]]
+script = ExtResource("1_vhpt8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08539963, 0.25, 0.06613922)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.085, 0.45, 0.066)
 shape = SubResource("BoxShape3D_q07ue")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["pickuplocal"]]

@@ -378,9 +378,9 @@ wait_time = 5.0
 autostart = true
 
 [node name="Torta" parent="." instance=ExtResource("20_w8wvx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5700617, 3.110756, 36.3602)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.645668, 3.110756, 4.580894)
 
 [node name="Masa1" parent="." instance=ExtResource("21_vqpme")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.820071, 3.2670112, 36.06128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.15852, 3.2670112, 23.206423)
 
 [connection signal="timeout" from="spawner_parent/Timer" to="spawner_parent" method="_on_timer_timeout"]
