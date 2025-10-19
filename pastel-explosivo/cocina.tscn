@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c4lh5vpo6iv8n"]
+[gd_scene load_steps=35 format=3 uid="uid://c4lh5vpo6iv8n"]
 
 [ext_resource type="Texture2D" uid="uid://tielynu17lau" path="res://texturas/getReal.jpg" id="1_ds2w5"]
 [ext_resource type="Script" uid="uid://bbe2xu120ur2x" path="res://scripts/cocina.gd" id="1_hbqs7"]
@@ -19,6 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://b7yl2lhkpw150" path="res://scripts/spawner.tscn" id="14_rabvo"]
 [ext_resource type="PackedScene" uid="uid://bxelykkj32tw8" path="res://ingredientes/harina.tscn" id="18_fdl3p"]
 [ext_resource type="ArrayMesh" uid="uid://c4nhbx67ijele" path="res://modelos3d/batidoraColor.obj" id="19_fdl3p"]
+[ext_resource type="ArrayMesh" uid="uid://bnj2gtjjnvc4p" path="res://modelos3d/torta_1.obj" id="20_46lo3"]
+[ext_resource type="ArrayMesh" uid="uid://caum1ga07og5n" path="res://modelos3d/masa1.obj" id="21_pihko"]
+[ext_resource type="ArrayMesh" uid="uid://ctr0rualwfxw2" path="res://modelos3d/torta_2.obj" id="22_3iv5w"]
+[ext_resource type="ArrayMesh" uid="uid://blxppg1knly1y" path="res://modelos3d/masa2.obj" id="23_i2x6s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfbld"]
 albedo_color = Color(0.61106855, 0.014915431, 0.49780202, 1)
@@ -48,6 +52,16 @@ size = Vector3(0.45, 1, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_hbqs7"]
 size = Vector3(1.32, 4.8, 1.32)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_w8wvx"]
+height = 0.72766113
+radius = 0.8388672
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q07ue"]
+size = Vector3(4.34, 1.98, 3.31)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f08n5"]
+size = Vector3(5.37, 1.445, 4.2)
+
 [node name="Node3D" type="Node3D"]
 process_mode = 3
 script = ExtResource("1_hbqs7")
@@ -55,7 +69,7 @@ script = ExtResource("1_hbqs7")
 [node name="Mapa" type="StaticBody3D" parent="."]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Mapa"]
-transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 60, -0.0009860992, 0, -0.023591518)
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 60, 0.072342396, 0.09792328, -0.2517867)
 material = SubResource("StandardMaterial3D_xfbld")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mapa"]
@@ -374,5 +388,48 @@ transform = Transform3D(-0.103717856, 0, 0.23295408, 0, 0.255, 0, -0.23295408, 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
 mesh = ExtResource("19_fdl3p")
+
+[node name="Torta" type="RigidBody3D" parent="." groups=["pickuplocal"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5700617, 3.110756, 36.3602)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torta"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63616943, 0)
+shape = SubResource("CylinderShape3D_w8wvx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torta" groups=["pickuplocal"]]
+transform = Transform3D(1.445, 0, 0, 0, 1.445, 0, 0, 0, 1.445, -3.358409, 0, -0.17958832)
+mesh = ExtResource("20_46lo3")
+
+[node name="Masa1" type="RigidBody3D" parent="." groups=["pickuplocal"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.820071, 3.2670112, 36.06128)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Masa1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.18715286)
+shape = SubResource("BoxShape3D_q07ue")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Masa1" groups=["pickuplocal"]]
+transform = Transform3D(0.58097506, 0, 0, 0, 0.6058699, 0, 0, 0, 0.5977832, 0, 0, 0)
+mesh = ExtResource("21_pihko")
+
+[node name="Torta2" type="RigidBody3D" parent="." groups=["pickuplocal"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.90141153, 3.110756, 35.89121)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Torta2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016350746, 0.63616943, 0)
+shape = SubResource("CylinderShape3D_w8wvx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Torta2" groups=["pickuplocal"]]
+transform = Transform3D(1.445, 0, 0, 0, 1.445, 0, 0, 0, 1.445, -3.4984827, 0, -2.8921738)
+mesh = ExtResource("22_3iv5w")
+
+[node name="Masa2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.429415, 3.7036743, 36.181065)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Masa2"]
+shape = SubResource("BoxShape3D_f08n5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Masa2"]
+transform = Transform3D(0.77, 0, 0, 0, 0.77, 0, 0, 0, 0.77, 0, -0.64525235, -5.665922)
+mesh = ExtResource("23_i2x6s")
 
 [connection signal="timeout" from="spawner_parent/Timer" to="spawner_parent" method="_on_timer_timeout"]
