@@ -14,3 +14,8 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# ignorar exportaciones
+*.console.exe
+*.pck
+*Export.exe
