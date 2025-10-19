@@ -6,7 +6,7 @@
 height = 1.0
 radius = 1.2
 
-[node name="Torta" type="RigidBody3D" groups=["pickuplocal"]]
+[node name="Torta" type="RigidBody3D" groups=["pickuplocal", "torta"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

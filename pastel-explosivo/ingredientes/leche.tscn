@@ -5,7 +5,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jn33y"]
 
-[node name="Leche" type="RigidBody3D" groups=["pickuplocal"]]
+[node name="Leche" type="RigidBody3D" groups=["ingrediente", "pickuplocal"]]
 script = ExtResource("1_7i8gb")
 
 [node name="leche2" parent="." instance=ExtResource("2_uterc")]

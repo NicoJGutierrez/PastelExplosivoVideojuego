@@ -25,6 +25,9 @@ window/stretch/aspect="expand"
 [global_group]
 
 pickup="items able to be picked up by the player"
+ingrediente=""
+masa=""
+torta=""
 
 [input]
 

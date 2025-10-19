@@ -6,7 +6,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_hyg3g"]
 size = Vector3(1, 0.53100586, 1)
 
-[node name="Mantequilla" type="RigidBody3D" groups=["pickuplocal"]]
+[node name="Mantequilla" type="RigidBody3D" groups=["ingrediente", "pickuplocal"]]
 script = ExtResource("1_1pvgq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["pickuplocal"]]

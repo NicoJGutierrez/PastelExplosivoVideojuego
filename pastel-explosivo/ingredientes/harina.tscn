@@ -6,7 +6,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_46lo3"]
 size = Vector3(1.8360596, 2.0925293, 1.1922607)
 
-[node name="harina" type="RigidBody3D" groups=["pickuplocal"]]
+[node name="harina" type="RigidBody3D" groups=["ingrediente", "pickuplocal"]]
 script = ExtResource("1_mrfwy")
 
 [node name="harina2" parent="." instance=ExtResource("2_8mepd")]
