@@ -20,6 +20,5 @@ func _process(delta):
 				var distance = self.global_position - entity.global_position
 				entity.apply_knockback(distance.normalized()*force*30)
 			if entity.is_in_group("pickuplocal"):
-				print("chain")
 				entity.explode(force * explosion_chain_force)
 		
