@@ -36,11 +36,16 @@ func explode(force):
 
 func crear_masa(combinado):
 	combinado.queue_free()
-	var nueva_masa = preload("res://scripts/masa.tscn")
+	var nueva_masa = load("res://ingredientes/masa.tscn")
 	var masa_instancia = nueva_masa.instantiate()
 	get_parent().add_child(masa_instancia)
 	masa_instancia.global_position = self.global_position
 	queue_free()
 	
 func crear_pastel(combinado):
-	pass
+	combinado.queue_free()
+	var nueva_masa = load("res://ingredientes/torta.tscn")
+	var masa_instancia = nueva_masa.instantiate()
+	get_parent().add_child(masa_instancia)
+	masa_instancia.global_position = self.global_position
+	queue_free()
