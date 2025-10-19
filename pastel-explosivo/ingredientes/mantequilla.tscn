@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvmw46f0qfbck"]
 
-[ext_resource type="Script" uid="uid://bcf6bwm0o8t3s" path="res://scripts/huevo_rigid_body_3d.gd" id="1_1pvgq"]
+[ext_resource type="Script" uid="uid://cerok56axa82h" path="res://scripts/itemExplosivo.gd" id="1_1pvgq"]
 [ext_resource type="PackedScene" uid="uid://d4gi5on3lgy5g" path="res://modelos3d/mantequilla.glb" id="2_t7uaj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hyg3g"]
